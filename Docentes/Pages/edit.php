@@ -32,7 +32,7 @@ $Docentes = $ModeloDocentes->getById($Id);
         <input type="text" name="Nombre" placeholder="Nombre" value="<?php echo $Docente['NOMBRE'] ?>"><br><br>
         <input type="text" name="Apellido" placeholder="Apellidos" value="<?php echo $Docente['APELLIDO'] ?>"><br><br>
         <input type="text" name="Usuario" placeholder="Usuario" value="<?php echo $Docente['USUARIO'] ?>"><br><br>
-        <input type="password" name="Password" placeholder="Password" value="<?php echo $Docente['PASS'] ?>"><br><br>
+        <input type="password" name="Contrasena" placeholder="Password" value="<?php echo $Docente['PASS'] ?>"><br><br>
 
         <select name="Estado">
             <option value="<?php echo $Docente['ESTADO'] ?>"><?php echo $Docente['ESTADO'] ?></option>

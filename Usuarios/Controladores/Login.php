@@ -11,7 +11,7 @@ if($_POST){
     $Modelo = new Usuarios();
 
     if($Modelo->login($Usuario,$Contrasena)){
-        header("Location: ../../Estudiantes/Pages/index.php");
+        header("Location: ../../Administradores/Pages/index.php");
     }else{
         header("Location: ../../index.php");
     }

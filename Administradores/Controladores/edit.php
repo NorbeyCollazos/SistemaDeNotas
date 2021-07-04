@@ -15,7 +15,7 @@ if($_POST){
     $Estado = $_POST['Estado'];
 
     $ModeloAdministradores = new Administradores();
-    $ModeloAdministradores->update($Id, $Nombre, $Apellido, $Usuario, $Pass, $Estado);
+    $ModeloAdministradores->update($Id, $Nombre, $Apellido, $Usuario, $Contrasena, $Estado);
 
 }else{
     header("Location: ../../index.php");

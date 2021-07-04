@@ -15,7 +15,7 @@ if($_POST){
     $Estado = $_POST['Estado'];
 
     $ModeloDocentes = new Docentes();
-    $ModeloDocentes->update($Id, $Nombre, $Apellido, $Usuario, $Pass, $Estado);
+    $ModeloDocentes->update($Id, $Nombre, $Apellido, $Usuario, $Contrasena, $Estado);
 
 }else{
     header("Location: ../../index.php");

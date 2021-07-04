@@ -24,7 +24,32 @@ $Modelo = new Estudiantes();
 
 <body>
 
-    <h1>Estudiantes</h1>
+    <?php
+    if ($ModeloUsuarios->getPerfil() == 'Docente') {
+
+    ?>
+        <h2>
+            <a href="#">Estudiantes - </a>
+            <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
+        </h2>
+    <?php
+    } else {
+
+    ?>
+        <h2>
+            <a href="../../Administradores/Pages/">Administradores - </a>
+            <a href="../../Docentes/Pages/">Docentes - </a>
+            <a href="#">Estudiantes - </a>
+            <a href="../../Materias/Pages/">Materias - </a>
+            <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
+        </h2>
+    <?php
+    }
+    ?>
+
+    <h3>Bienvenido: <?php echo $ModeloUsuarios->getNombre().' - '. $ModeloUsuarios->getPerfil(); ?></h3>
+
+
     <a href="add.php">Registrar estudiante</a><br><br>
 
     <table border="1" cellspacing>

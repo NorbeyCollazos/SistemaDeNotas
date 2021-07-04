@@ -3,7 +3,7 @@ require_once("../../Usuarios/Modelo/Usuarios.php");
 require_once("../Modelo/Materias.php");
 
 $ModeloUsuarios = new Usuarios();
-$ModeloUsuarios->validateSession();
+$ModeloUsuarios->validateSessionAdministrator();
 
 $ModeloMaterias = new Materias();
 $Materias = $ModeloMaterias->get();
@@ -19,8 +19,18 @@ $Materias = $ModeloMaterias->get();
     <title>Materias</title>
 </head>
 <body>
-    <h1>Materias</h1>
+<h2>
+
+<a href="../../Administradores/Pages/">Administradores - </a>
+    <a href="../../Docentes/Pages/">Docentes - </a>
+    <a href="../../Docentes/Pages/">Estudiantes - </a>
+    <a href="#">Materias - </a>
+    <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
+</h2>
+
+
     <a href="add.php">Registrar Materia</a><br><br>
+
     <table border="1">
         <tr>
             <th>Id</th>
