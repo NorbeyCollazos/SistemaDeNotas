@@ -1,3 +1,11 @@
+<?php
+require_once("../../Usuarios/Modelo/Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+$ModeloUsuarios->validateSession();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +23,7 @@
         <input type="text" name="Nombre" placeholder="Nombre"><br><br>
         <input type="text" name="Apellido" placeholder="Apellidos"><br><br>
         <input type="text" name="Usuario" placeholder="Usuario"><br><br>
-        <input type="password" name="Password" placeholder="Password"><br><br>
+        <input type="password" name="Contrasena" placeholder="Contraseña"><br><br>
         
         <input type="submit" value="Registrar Administrador">
 

@@ -1,6 +1,26 @@
 <?php
-$materias = array("Programación", "Cultura", "Ciencias sociales", "Español", "Inglés");
-$docentes = array("Pedro Maria", "Reinaldo Rueda", "Pepe Sanchez", "Cristian Debolla", "Pancrasio Puentes");
+
+$Id = $_GET['Id'];
+
+//requerimos el modelo usuario para implementar el metodo de validar sesion
+require_once("../../Usuarios/Modelo/Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+$ModeloUsuarios->validateSession();
+
+//requqerimos el modelo de Metodos
+require_once("../../Metodos.php");
+$ModeloMetodos = new Metodos();
+
+//requerimos el modelo de estudiante de
+require_once("../Modelo/Estudiantes.php");
+$ModeloEstudiantes = new Estudiantes();
+
+$Estudiantes = $ModeloEstudiantes->getById($Id);
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,33 +36,52 @@ $docentes = array("Pedro Maria", "Reinaldo Rueda", "Pepe Sanchez", "Cristian Deb
 <body>
     <h1>Editar estudiante</h1>
     <form action="../Controladores/edit.php" method="post">
-        <input type="hidden" name="Id" value="">
-        <input type="text" name="Nombre" placeholder="Nombre"><br><br>
-        <input type="text" name="Apellido" placeholder="Apellidos"><br><br>
-        <input type="text" name="Documento" placeholder="Documento"><br><br>
-        <input type="text" name="Correo" placeholder="Correo"><br><br>
+        <input type="hidden" name="Id" value="<?php echo $Id ?>">
+
+        <?php
+            if($Estudiantes != null){
+                foreach ($Estudiantes as $Estudiante){
+        ?>
+
+        <input type="text" name="Nombre" placeholder="Nombre" value="<?php echo $Estudiante['NOMBRE'] ?>"><br><br>
+        <input type="text" name="Apellido" placeholder="Apellidos" value="<?php echo $Estudiante['APELLIDO'] ?>"><br><br>
+        <input type="text" name="Documento" placeholder="Documento" value="<?php echo $Estudiante['DOCUMENTO'] ?>"><br><br>
+        <input type="text" name="Correo" placeholder="Correo" value="<?php echo $Estudiante['CORREO'] ?>"><br><br>
         <select name="Materia">
-            <option>Seleccione la Materia</option>
+            <option value="<?php echo $Estudiante['MATERIA'] ?>"><?php echo $Estudiante['MATERIA'] ?></option>
             <?php
-            foreach ($materias as $materia) {
+            $Materias = $ModeloMetodos->getMaterias();
+            if ($Materias != null) {
+                foreach ($Materias as $materia) {
             ?>
-                <option value="<?php echo $materia ?>"><?php echo $materia ?></option>
+                    <option value="<?php echo $materia['MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
             <?php
+                }
             }
             ?>
         </select><br><br>
 
         <select name="Docente">
-            <option>Seleccione el docente</option>
+            <option value="<?php echo $Estudiante['DOCENTE'] ?>"><?php echo $Estudiante['DOCENTE'] ?></option>
             <?php
-            foreach ($docentes as $docente) {
+            $Docentes = $ModeloMetodos->getDocentes();
+            if ($Docentes != null) {
+                foreach ($Docentes as $docente) {
             ?>
-                <option value="<?php echo $docente ?>"><?php echo $docente ?></option>
+                    <option value="<?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
             <?php
+                }
             }
             ?>
         </select><br><br>
-        <input type="number" name="Promedio" placeholder="Promedio"><br><br>
+        <input type="number" name="Promedio" placeholder="Promedio" value="<?php echo $Estudiante['PROMEDIO'] ?>"><br><br>
+
+            <?php
+                
+            }
+        }
+            ?>
+
         <input type="submit" value="Editar Estudiante">
 
     </form>

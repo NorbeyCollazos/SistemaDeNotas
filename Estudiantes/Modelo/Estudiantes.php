@@ -67,7 +67,7 @@ class Estudiantes extends Conexion {
     }
 
     public function delete($Id){
-        $statement = $this->db->prepare("DELETE FROM estudiante WHERE ID_ESTUDIANTE = :Id");
+        $statement = $this->db->prepare("DELETE FROM estudiantes WHERE ID_ESTUDIANTE = :Id");
         $statement->bindParam(':Id',$Id);
         if($statement->execute()){
             header("Location: ../Pages/index.php");

@@ -1,6 +1,15 @@
 <?php
-$materias = array("Programación", "Cultura", "Ciencias sociales", "Español", "Inglés");
-$docentes = array("Pedro Maria", "Reinaldo Rueda", "Pepe Sanchez", "Cristian Debolla", "Pancrasio Puentes");
+//requerimos el modelo usuario para implementar el metodo de validar sesion
+require_once("../../Usuarios/Modelo/Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+$ModeloUsuarios->validateSession();
+
+//requqerimos el modelo de Metodos
+require_once("../../Metodos.php");
+$ModeloMetodos = new Metodos();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +33,13 @@ $docentes = array("Pedro Maria", "Reinaldo Rueda", "Pepe Sanchez", "Cristian Deb
         <select name="Materia">
             <option>Seleccione la Materia</option>
             <?php
-            foreach ($materias as $materia) {
+            $Materias = $ModeloMetodos->getMaterias();
+            if ($Materias != null) {
+                foreach ($Materias as $materia) {
             ?>
-                <option value="<?php echo $materia ?>"><?php echo $materia ?></option>
+                    <option value="<?php echo $materia['MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
             <?php
+                }
             }
             ?>
         </select><br><br>
@@ -35,10 +47,13 @@ $docentes = array("Pedro Maria", "Reinaldo Rueda", "Pepe Sanchez", "Cristian Deb
         <select name="Docente">
             <option>Seleccione el docente</option>
             <?php
-            foreach ($docentes as $docente) {
+            $Docentes = $ModeloMetodos->getDocentes();
+            if ($Docentes != null) {
+                foreach ($Docentes as $docente) {
             ?>
-                <option value="<?php echo $docente ?>"><?php echo $docente ?></option>
+                    <option value="<?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
             <?php
+                }
             }
             ?>
         </select><br><br>

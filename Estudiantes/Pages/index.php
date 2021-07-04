@@ -1,13 +1,29 @@
+<?php
+
+//requerimos el modelo usuario para implementar el metodo de validar sesion
+require_once("../../Usuarios/Modelo/Usuarios.php");
+
+$ModeloUsuarios = new Usuarios();
+$ModeloUsuarios->validateSession();
+
+//requqerimos el modelo de estudiantes
+require_once("../Modelo/Estudiantes.php");
+$Modelo = new Estudiantes();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudiantes</title>
 </head>
+
 <body>
-    
+
     <h1>Estudiantes</h1>
     <a href="add.php">Registrar estudiante</a><br><br>
 
@@ -24,22 +40,35 @@
             <th>Fecha de Registro</th>
             <th>Acciones</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-            <a href="edit.php">Editar</a>
-            <a href="delete.php">Eliminar</a>
-            </td>
-        </tr>
+
+        <?php
+        $Estudiantes = $Modelo->get();
+        if ($Estudiantes != null) {
+            foreach ($Estudiantes as $Estudiante) {
+        ?>
+
+                <tr>
+                    <td><?php echo $Estudiante['ID_ESTUDIANTE'] ?></td>
+                    <td><?php echo $Estudiante['NOMBRE'] ?></td>
+                    <td><?php echo $Estudiante['APELLIDO'] ?></td>
+                    <td><?php echo $Estudiante['DOCUMENTO'] ?></td>
+                    <td><?php echo $Estudiante['CORREO'] ?></td>
+                    <td><?php echo $Estudiante['MATERIA'] ?></td>
+                    <td><?php echo $Estudiante['DOCENTE'] ?></td>
+                    <td><?php echo $Estudiante['PROMEDIO'] ?></td>
+                    <td><?php echo $Estudiante['FECHA_REGISTRO'] ?></td>
+                    <td>
+                        <a href="edit.php?Id=<?php echo $Estudiante['ID_ESTUDIANTE'] ?>">Editar</a>
+                        <a href="delete.php?Id=<?php echo $Estudiante['ID_ESTUDIANTE'] ?>">Eliminar</a>
+                    </td>
+                </tr>
+
+        <?php
+            }
+        }
+        ?>
     </table>
-    
+
 </body>
+
 </html>
