@@ -15,7 +15,9 @@ if($_POST){
     $Estado = $_POST['Estado'];
 
     $ModeloDocentes = new Docentes();
-    $ModeloDocentes->update($Id, $Nombre, $Apellido, $Usuario, $Contrasena, $Estado);
+    //encriptamos la contraseña
+    $contrasenaEncriptada = password_hash($Contrasena, PASSWORD_DEFAULT);
+    $ModeloDocentes->update($Id, $Nombre, $Apellido, $Usuario, $contrasenaEncriptada, $Estado);
 
 }else{
     header("Location: ../../index.php");

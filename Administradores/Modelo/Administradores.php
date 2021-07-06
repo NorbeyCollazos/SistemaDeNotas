@@ -9,17 +9,28 @@ class Administradores extends Conexion {
     }
 
     public function add($Nombre, $Apellido, $Usuario, $Pass){
-        $statement = $this->db->prepare("INSERT INTO usuarios (NOMBRE, APELLIDO, USUARIO, PASS, PERFIL, ESTADO)
-        VALUES (:Nombre, :Apellido, :Usuario, :Pass, 'Administrador', 'Activo')");
-        $statement->bindParam(':Nombre',$Nombre);
-        $statement->bindParam(':Apellido',$Apellido);
-        $statement->bindParam(':Usuario',$Usuario);
-        $statement->bindParam(':Pass',$Pass);
-        if($statement->execute()){
-            header("Location: ../Pages/index.php");
+
+        //primero consultamos si ya existe el usuario
+        $usuarioExistente = $this->db->prepare("SELECT USUARIO FROM usuarios WHERE USUARIO = :Usuario");
+        $usuarioExistente->bindParam(":Usuario",$Usuario);
+        $usuarioExistente->execute();
+        if($usuarioExistente->rowCount()==1){
+            echo "Ya existe el usuario <b>".$Usuario."</b> Por favor prueba con otro nombre de usuario";
         }else{
-            header("Location: ../Pages/add.php");
+            $statement = $this->db->prepare("INSERT INTO usuarios (NOMBRE, APELLIDO, USUARIO, PASS, PERFIL, ESTADO)
+            VALUES (:Nombre, :Apellido, :Usuario, :Pass, 'Administrador', 'Activo')");
+            $statement->bindParam(':Nombre',$Nombre);
+            $statement->bindParam(':Apellido',$Apellido);
+            $statement->bindParam(':Usuario',$Usuario);
+            $statement->bindParam(':Pass',$Pass);
+            if($statement->execute()){
+                header("Location: ../Pages/index.php");
+            }else{
+                header("Location: ../Pages/add.php");
+            }
         }
+
+        
     }
 
     public function get(){

@@ -13,7 +13,9 @@ if($_POST){
     $Contrasena = $_POST['Contrasena'];
 
     $ModeloAdministradores = new Administradores();
-    $ModeloAdministradores->add($Nombre,$Apellido,$Usuario, $Contrasena);
+    //encriptamos la contraseña
+    $contrasenaEncriptada = password_hash($Contrasena, PASSWORD_DEFAULT);
+    $ModeloAdministradores->add($Nombre,$Apellido,$Usuario, $contrasenaEncriptada);
 
 }else{
     header("Location: ../../index.php");

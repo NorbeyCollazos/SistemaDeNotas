@@ -13,7 +13,9 @@ if($_POST){
     $Contrasena = $_POST['Contrasena'];
 
     $ModeloDocentes = new Docentes();
-    $ModeloDocentes->add($Nombre,$Apellido,$Usuario, $Contrasena);
+    //encriptamos la contraseña
+    $contrasenaEncriptada = password_hash($Contrasena, PASSWORD_DEFAULT);
+    $ModeloDocentes->add($Nombre,$Apellido,$Usuario, $contrasenaEncriptada);
 
 }else{
     header("Location: ../../index.php");
