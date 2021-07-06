@@ -48,13 +48,13 @@ $Estudiantes = $ModeloEstudiantes->getById($Id);
         <input type="text" name="Documento" placeholder="Documento" value="<?php echo $Estudiante['DOCUMENTO'] ?>"><br><br>
         <input type="text" name="Correo" placeholder="Correo" value="<?php echo $Estudiante['CORREO'] ?>"><br><br>
         <select name="Materia">
-            <option value="<?php echo $Estudiante['MATERIA'] ?>"><?php echo $Estudiante['MATERIA'] ?></option>
+            <option value="<?php echo $Estudiante['ID_MATERIA'] ?>"><?php echo $Estudiante['MATERIA'] ?></option>
             <?php
             $Materias = $ModeloMetodos->getMaterias();
             if ($Materias != null) {
                 foreach ($Materias as $materia) {
             ?>
-                    <option value="<?php echo $materia['MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
+                    <option value="<?php echo $materia['ID_MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
             <?php
                 }
             }
@@ -62,13 +62,13 @@ $Estudiantes = $ModeloEstudiantes->getById($Id);
         </select><br><br>
 
         <select name="Docente">
-            <option value="<?php echo $Estudiante['DOCENTE'] ?>"><?php echo $Estudiante['DOCENTE'] ?></option>
+            <option value="<?php echo $Estudiante['ID_USUARIO'] ?>"><?php echo $Estudiante['DOCENTE'].' '.$docente['APELLIDO'] ?></option>
             <?php
             $Docentes = $ModeloMetodos->getDocentes();
             if ($Docentes != null) {
                 foreach ($Docentes as $docente) {
             ?>
-                    <option value="<?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
+                    <option value="<?php echo $docente['ID_USUARIO'].' '.$docente['APELLIDO'] ?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
             <?php
                 }
             }

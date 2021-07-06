@@ -79,7 +79,7 @@ $Modelo = new Estudiantes();
                     <td><?php echo $Estudiante['DOCUMENTO'] ?></td>
                     <td><?php echo $Estudiante['CORREO'] ?></td>
                     <td><?php echo $Estudiante['MATERIA'] ?></td>
-                    <td><?php echo $Estudiante['DOCENTE'] ?></td>
+                    <td><?php echo $Estudiante['DOCENTE']. ' '.$Estudiante['APELLIDO'] ?></td>
                     <td><?php echo $Estudiante['PROMEDIO'] ?></td>
                     <td><?php echo $Estudiante['FECHA_REGISTRO'] ?></td>
                     <td>

@@ -28,7 +28,8 @@ class Estudiantes extends Conexion {
 
     public function get(){
         $rows = null;
-        $statement = $this->db->prepare("SELECT * FROM estudiantes");
+        $statement = $this->db->prepare("SELECT E.ID_ESTUDIANTE, E.NOMBRE,E.APELLIDO, E.DOCUMENTO, E.CORREO, M.MATERIA, D.NOMBRE AS DOCENTE, D.APELLIDO, E.PROMEDIO, E.FECHA_REGISTRO
+         FROM estudiantes E JOIN usuarios D ON E.DOCENTE = D.ID_USUARIO JOIN materias M ON E.MATERIA = M.ID_MATERIA");
         $statement->execute();
         while($result = $statement->fetch()){
             $rows[] = $result;
@@ -38,7 +39,9 @@ class Estudiantes extends Conexion {
 
     public function getById($Id){
         $rows = null;
-        $statement = $this->db->prepare("SELECT * FROM estudiantes WHERE ID_ESTUDIANTE = :Id");
+        $statement = $this->db->prepare("SELECT E.ID_ESTUDIANTE, E.NOMBRE,E.APELLIDO, E.DOCUMENTO, E.CORREO, M.ID_MATERIA, M.MATERIA, D.ID_USUARIO, D.NOMBRE AS DOCENTE, E.PROMEDIO, E.FECHA_REGISTRO
+        FROM estudiantes E JOIN usuarios D ON E.DOCENTE = D.ID_USUARIO JOIN materias M ON E.MATERIA = M.ID_MATERIA
+        WHERE ID_ESTUDIANTE = :Id");
         $statement->bindParam(':Id',$Id);
         $statement->execute();
         while($result = $statement->fetch()){

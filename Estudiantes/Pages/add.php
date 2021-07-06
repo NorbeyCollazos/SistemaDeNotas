@@ -37,7 +37,7 @@ $ModeloMetodos = new Metodos();
             if ($Materias != null) {
                 foreach ($Materias as $materia) {
             ?>
-                    <option value="<?php echo $materia['MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
+                    <option value="<?php echo $materia['ID_MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
             <?php
                 }
             }
@@ -51,7 +51,7 @@ $ModeloMetodos = new Metodos();
             if ($Docentes != null) {
                 foreach ($Docentes as $docente) {
             ?>
-                    <option value="<?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
+                    <option value="<?php echo $docente['ID_USUARIO']?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
             <?php
                 }
             }
