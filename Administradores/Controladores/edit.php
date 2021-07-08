@@ -11,13 +11,12 @@ if($_POST){
     $Nombre = $_POST['Nombre'];
     $Apellido = $_POST['Apellido'];
     $Usuario = $_POST['Usuario'];
-    $Contrasena = $_POST['Contrasena'];
     $Estado = $_POST['Estado'];
 
     $ModeloAdministradores = new Administradores();
     //encriptamos la contraseña
     $contrasenaEncriptada = password_hash($Contrasena, PASSWORD_DEFAULT);
-    $ModeloAdministradores->update($Id, $Nombre, $Apellido, $Usuario, $contrasenaEncriptada, $Estado);
+    $ModeloAdministradores->update($Id, $Nombre, $Apellido, $Usuario, $Estado);
 
 }else{
     header("Location: ../../index.php");

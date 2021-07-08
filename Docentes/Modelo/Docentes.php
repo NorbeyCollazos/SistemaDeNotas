@@ -57,15 +57,14 @@ class Docentes extends Conexion
         return $rows;
     }
 
-    public function update($Id, $Nombre, $Apellido, $Usuario, $Pass, $Estado)
+    public function update($Id, $Nombre, $Apellido, $Usuario, $Estado)
     {
-        $statement = $this->db->prepare("UPDATE usuarios SET NOMBRE = :Nombre, APELLIDO = :Apellido, USUARIO = :Usuario, PASS = :Pass, ESTADO = :Estado
+        $statement = $this->db->prepare("UPDATE usuarios SET NOMBRE = :Nombre, APELLIDO = :Apellido, USUARIO = :Usuario, ESTADO = :Estado
         WHERE ID_USUARIO = :Id");
         $statement->bindParam(':Id', $Id);
         $statement->bindParam(':Nombre', $Nombre);
         $statement->bindParam(':Apellido', $Apellido);
         $statement->bindParam(':Usuario', $Usuario);
-        $statement->bindParam(':Pass', $Pass);
         $statement->bindParam(':Estado', $Estado);
 
         if ($statement->execute()) {

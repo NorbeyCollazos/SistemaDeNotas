@@ -34,57 +34,88 @@ $Estudiantes = $ModeloEstudiantes->getById($Id);
 </head>
 
 <body>
-    <h1>Editar estudiante</h1>
-    <form action="../Controladores/edit.php" method="post">
-        <input type="hidden" name="Id" value="<?php echo $Id ?>">
+    <?php include("../../cabecera.php"); ?>
 
-        <?php
-            if($Estudiantes != null){
-                foreach ($Estudiantes as $Estudiante){
-        ?>
+    <div class="container mt-3 col-md-6">
 
-        <input type="text" name="Nombre" placeholder="Nombre" value="<?php echo $Estudiante['NOMBRE'] ?>"><br><br>
-        <input type="text" name="Apellido" placeholder="Apellidos" value="<?php echo $Estudiante['APELLIDO'] ?>"><br><br>
-        <input type="text" name="Documento" placeholder="Documento" value="<?php echo $Estudiante['DOCUMENTO'] ?>"><br><br>
-        <input type="text" name="Correo" placeholder="Correo" value="<?php echo $Estudiante['CORREO'] ?>"><br><br>
-        <select name="Materia">
-            <option value="<?php echo $Estudiante['ID_MATERIA'] ?>"><?php echo $Estudiante['MATERIA'] ?></option>
+        <h2 class="mb-3">Editar Estudiante</h2>
+
+        <form action="../Controladores/edit.php" method="post">
+
+            <input type="hidden" name="Id" value="<?php echo $Id ?>">
+
             <?php
-            $Materias = $ModeloMetodos->getMaterias();
-            if ($Materias != null) {
-                foreach ($Materias as $materia) {
+            if ($Estudiantes != null) {
+                foreach ($Estudiantes as $Estudiante) {
             ?>
-                    <option value="<?php echo $materia['ID_MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" name="Nombre" id="form6Example1" class="form-control" required value="<?php echo $Estudiante['NOMBRE'] ?>" />
+                        <label class="form-label" for="form6Example1">Nombre</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" name="Apellido" id="formform6Example2" class="form-control" required value="<?php echo $Estudiante['APELLIDO'] ?>" />
+                        <label class="form-label" for="form6Example2">Apellido</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" name="Documento" id="formform6Example2" class="form-control" required value="<?php echo $Estudiante['DOCUMENTO'] ?>" />
+                        <label class="form-label" for="form6Example2">Documento</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="email" name="Correo" id="formform6Example2" class="form-control" required value="<?php echo $Estudiante['CORREO'] ?>" />
+                        <label class="form-label" for="form6Example2">Correo</label>
+                    </div>
+
+                    <select name="Materia">
+                        <option value="<?php echo $Estudiante['ID_MATERIA'] ?>"><?php echo $Estudiante['MATERIA'] ?></option>
+                        <?php
+                        $Materias = $ModeloMetodos->getMaterias();
+                        if ($Materias != null) {
+                            foreach ($Materias as $materia) {
+                        ?>
+                                <option value="<?php echo $materia['ID_MATERIA'] ?>"><?php echo $materia['MATERIA'] ?></option>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </select><br><br>
+
+                    <select name="Docente">
+                        <option value="<?php echo $Estudiante['ID_USUARIO'] ?>"><?php echo $Estudiante['DOCENTE'] . ' ' . $Estudiante['APELLIDO_DOCENTE'] ?></option>
+                        <?php
+                        $Docentes = $ModeloMetodos->getDocentes();
+                        if ($Docentes != null) {
+                            foreach ($Docentes as $docente) {
+                        ?>
+                                <option value="<?php echo $docente['ID_USUARIO'] ?>"><?php echo $docente['NOMBRE'] . ' ' . $docente['APELLIDO'] ?></option>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </select><br><br>
+                    <div class="form-outline mb-4">
+                        <input type="number" name="Promedio" id="formform6Example2" class="form-control" required value="<?php echo $Estudiante['PROMEDIO'] ?>"/>
+                        <label class="form-label" for="form6Example2">Promedio</label>
+                    </div>
+
             <?php
+
                 }
             }
             ?>
-        </select><br><br>
 
-        <select name="Docente">
-            <option value="<?php echo $Estudiante['ID_USUARIO'] ?>"><?php echo $Estudiante['DOCENTE'].' '.$docente['APELLIDO'] ?></option>
-            <?php
-            $Docentes = $ModeloMetodos->getDocentes();
-            if ($Docentes != null) {
-                foreach ($Docentes as $docente) {
-            ?>
-                    <option value="<?php echo $docente['ID_USUARIO'].' '.$docente['APELLIDO'] ?>"><?php echo $docente['NOMBRE'].' '.$docente['APELLIDO'] ?></option>
-            <?php
-                }
-            }
-            ?>
-        </select><br><br>
-        <input type="number" name="Promedio" placeholder="Promedio" value="<?php echo $Estudiante['PROMEDIO'] ?>"><br><br>
+            <input type="submit" value="Editar Estudiante" class="btn btn-success btn-rounded mb-4">
 
-            <?php
-                
-            }
-        }
-            ?>
+        </form>
 
-        <input type="submit" value="Editar Estudiante">
+    </div>
 
-    </form>
+    <!-- MDB -->
+    <script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
+
 </body>
 
 </html>

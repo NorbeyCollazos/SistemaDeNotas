@@ -2,6 +2,7 @@
 
 require_once("Conexion.php");
 
+
 class Metodos extends Conexion {
 
     public function __construct(){
@@ -28,6 +29,9 @@ class Metodos extends Conexion {
         }
         return $rows;
     }
+
+
+
 
     
 }

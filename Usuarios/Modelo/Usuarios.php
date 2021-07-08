@@ -30,6 +30,38 @@ class Usuarios extends Conexion
         return false;
     }
 
+    public function add($Nombre, $Apellido, $Usuario, $Pass){
+
+     
+        //primero consultamos si ya existe el usuario
+        $usuarioExistente = $this->db->prepare("SELECT USUARIO FROM usuarios WHERE USUARIO = :Usuario");
+        $usuarioExistente->bindParam(":Usuario",$Usuario);
+        $usuarioExistente->execute();
+        if($usuarioExistente->rowCount()==1){
+            echo "Ya existe el usuario <b>".$Usuario."</b> Por favor prueba con otro nombre de usuario";
+        }else{
+            $statement = $this->db->prepare("INSERT INTO usuarios (NOMBRE, APELLIDO, USUARIO, PASS, PERFIL, ESTADO)
+            VALUES (:Nombre, :Apellido, :Usuario, :Pass, 'Administrador', 'Activo')");
+            $statement->bindParam(':Nombre',$Nombre);
+            $statement->bindParam(':Apellido',$Apellido);
+            $statement->bindParam(':Usuario',$Usuario);
+            $statement->bindParam(':Pass',$Pass);
+            if($statement->execute()){
+               
+                $_SESSION['NOMBRE'] = $Nombre;
+                $_SESSION['ID'] = $this->db->lastInsertId();
+                $_SESSION['PERFIL'] = "Adminstrador";
+                
+                header("Location: ../../PanelInicial/Pages/index.php");
+            }else{
+                header("Location: ../../registro.php");
+            }
+        }
+
+        
+    }
+
+
     //metodos get
     public function getNombre()
     {

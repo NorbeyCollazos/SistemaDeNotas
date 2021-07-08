@@ -24,50 +24,49 @@ $Docentes = $ModeloDocentes->get();
 
 <body>
 
-    <h2>
-        <a href="../../Administradores/Pages/">Administradores - </a>
-        <a href="#">Docentes - </a>
-        <a href="../../Estudiantes/Pages/">Estudiantes - </a>
-        <a href="../../Materias/Pages/">Materias - </a>
-        <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
+    <?php include("../../cabecera.php"); ?>
 
-    </h2>
+    <div class="container mt-3">
 
-    <a href="add.php">Registrar Docente</a><br><br>
+        <h1>Docentes</h1>
+        <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Docente</a><br><br>
 
-    <table border="1" cellspacing>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Usuario</th>
-            <th>Perfil</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-        <tr>
-            <?php
-            if ($Docentes != null) {
-                foreach ($Docentes as $Docente) {
-            ?>
-        <tr>
-            <td><?php echo $Docente['ID_USUARIO'] ?></td>
-            <td><?php echo $Docente['NOMBRE'] ?></td>
-            <td><?php echo $Docente['APELLIDO'] ?></td>
-            <td><?php echo $Docente['USUARIO'] ?></td>
-            <td><?php echo $Docente['PERFIL'] ?></td>
-            <td><?php echo $Docente['ESTADO'] ?></td>
-            <td>
-                <a href="edit.php?Id=<?php echo $Docente['ID_USUARIO'] ?>">Editar</a>
-                <a href="delete.php?Id=<?php echo $Docente['ID_USUARIO'] ?>">Eliminar</a>
-            </td>
-        </tr>
-<?php
+        <table class="table align-middle">
+            <tr>
+                <th class="fw-bold">Id</th>
+                <th class="fw-bold">Nombre</th>
+                <th class="fw-bold">Apellidos</th>
+                <th class="fw-bold">Usuario</th>
+                <th class="fw-bold">Perfil</th>
+                <th class="fw-bold">Estado</th>
+                <th class="fw-bold">Acciones</th>
+            </tr>
+            <tr>
+                <?php
+                if ($Docentes != null) {
+                    foreach ($Docentes as $Docente) {
+                ?>
+            <tr>
+                <td><?php echo $Docente['ID_USUARIO'] ?></td>
+                <td><?php echo $Docente['NOMBRE'] ?></td>
+                <td><?php echo $Docente['APELLIDO'] ?></td>
+                <td><?php echo $Docente['USUARIO'] ?></td>
+                <td><?php echo $Docente['PERFIL'] ?></td>
+                <td><?php echo $Docente['ESTADO'] ?></td>
+                <td>
+                    <a href="edit.php?Id=<?php echo $Docente['ID_USUARIO'] ?>" class="btn btn-primary btn-sm px-3">Editar</a>
+                    <a href="delete.php?Id=<?php echo $Docente['ID_USUARIO'] ?>" class="btn btn-danger btn-sm px-3">Eliminar</a>
+                </td>
+            </tr>
+    <?php
+                    }
                 }
-            }
-?>
-</tr>
-    </table>
+    ?>
+    </tr>
+        </table>
+
+        <!-- MDB -->
+        <script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
 
 </body>
 

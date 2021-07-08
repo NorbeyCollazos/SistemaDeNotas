@@ -24,46 +24,25 @@ $Modelo = new Estudiantes();
 
 <body>
 
-    <?php
-    if ($ModeloUsuarios->getPerfil() == 'Docente') {
+<?php include("../../cabecera.php"); ?>
 
-    ?>
-        <h2>
-            <a href="#">Estudiantes - </a>
-            <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
-        </h2>
-    <?php
-    } else {
+<div class="container mt-3">
 
-    ?>
-        <h2>
-            <a href="../../Administradores/Pages/">Administradores - </a>
-            <a href="../../Docentes/Pages/">Docentes - </a>
-            <a href="#">Estudiantes - </a>
-            <a href="../../Materias/Pages/">Materias - </a>
-            <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
-        </h2>
-    <?php
-    }
-    ?>
+    <h1>Estudiantes</h1>
+    <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Estudiante</a><br><br>
 
-    <h3>Bienvenido: <?php echo $ModeloUsuarios->getNombre().' - '. $ModeloUsuarios->getPerfil(); ?></h3>
-
-
-    <a href="add.php">Registrar estudiante</a><br><br>
-
-    <table border="1" cellspacing>
+    <table class="table align-middle">
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Documento</th>
-            <th>Correo</th>
-            <th>Materia</th>
-            <th>Docente</th>
-            <th>Promedio</th>
-            <th>Fecha de Registro</th>
-            <th>Acciones</th>
+            <th class="fw-bold">Id</th>
+            <th class="fw-bold">Nombre</th>
+            <th class="fw-bold">Apellidos</th>
+            <th class="fw-bold">Documento</th>
+            <th class="fw-bold">Correo</th>
+            <th class="fw-bold">Materia</th>
+            <th class="fw-bold">Docente</th>
+            <th class="fw-bold">Promedio</th>
+            <th class="fw-bold">Fecha de Registro</th>
+            <th class="fw-bold">Acciones</th>
         </tr>
 
         <?php
@@ -79,12 +58,12 @@ $Modelo = new Estudiantes();
                     <td><?php echo $Estudiante['DOCUMENTO'] ?></td>
                     <td><?php echo $Estudiante['CORREO'] ?></td>
                     <td><?php echo $Estudiante['MATERIA'] ?></td>
-                    <td><?php echo $Estudiante['DOCENTE']. ' '.$Estudiante['APELLIDO'] ?></td>
+                    <td><?php echo $Estudiante['DOCENTE']. ' '.$Estudiante['APELLIDO_DOCENTE'] ?></td>
                     <td><?php echo $Estudiante['PROMEDIO'] ?></td>
                     <td><?php echo $Estudiante['FECHA_REGISTRO'] ?></td>
                     <td>
-                        <a href="edit.php?Id=<?php echo $Estudiante['ID_ESTUDIANTE'] ?>">Editar</a>
-                        <a href="delete.php?Id=<?php echo $Estudiante['ID_ESTUDIANTE'] ?>">Eliminar</a>
+                        <a href="edit.php?Id=<?php echo $Estudiante['ID_ESTUDIANTE'] ?>" class="btn btn-primary btn-sm px-3">Editar</a>
+                        <a href="delete.php?Id=<?php echo $Estudiante['ID_ESTUDIANTE'] ?>" class="btn btn-danger btn-sm px-3">Eliminar</a>
                     </td>
                 </tr>
 
@@ -93,6 +72,9 @@ $Modelo = new Estudiantes();
         }
         ?>
     </table>
+
+<!-- MDB -->
+<script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
 
 </body>
 

@@ -22,33 +22,62 @@ $Docentes = $ModeloDocentes->getById($Id);
 </head>
 
 <body>
-    <h1>Editar Docente</h1>
-    <form action="../Controladores/edit.php" method="post">
-    <input type="hidden" name="Id" value="<?php echo $Id; ?>">
-        <?php
-            if($Docentes != null){
-                foreach($Docentes as $Docente){
-        ?>
-        <input type="text" name="Nombre" placeholder="Nombre" value="<?php echo $Docente['NOMBRE'] ?>"><br><br>
-        <input type="text" name="Apellido" placeholder="Apellidos" value="<?php echo $Docente['APELLIDO'] ?>"><br><br>
-        <input type="text" name="Usuario" placeholder="Usuario" value="<?php echo $Docente['USUARIO'] ?>"><br><br>
-        <input type="password" name="Contrasena" placeholder="Password" value="<?php echo $Docente['PASS'] ?>"><br><br>
+<?php include("../../cabecera.php"); ?>
+    
 
-        <select name="Estado">
-            <option value="<?php echo $Docente['ESTADO'] ?>"><?php echo $Docente['ESTADO'] ?></option>
-            <option value="Activo">Activo</option>
-            <option value="Inactivo">Inactivo</option>
-        </select><br><br>
+    <div class="container mt-3 col-md-6">
 
-        <?php
-                    
+
+        <h2 class="mb-3">Editar Docente</h2>
+        <form action="../Controladores/edit.php" method="post">
+
+            <input type="hidden" name="Id" value="<?php echo $Id; ?>">
+            
+
+            <?php
+            if ($Docentes != null) {
+                foreach ($Docentes as $Docente) {
+            ?>
+                    <div class="form-outline mb-4">
+                        <input type="text" name="Nombre" id="form6Example1" class="form-control" required value="<?php echo $Docente['NOMBRE'] ?>" />
+                        <label class="form-label" for="form6Example1">Nombre</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" name="Apellido" id="formform6Example2" class="form-control" required value="<?php echo $Docente['APELLIDO'] ?>" />
+                        <label class="form-label" for="form6Example2">Apellido</label>
+                    </div>
+
+
+                    <div class="form-outline mb-4">
+                        <input type="text" name="Usuario" id="formform6Example3" class="form-control" required value="<?php echo $Docente['USUARIO'] ?>" />
+                        <label class="form-label" for="form6Example3">Usuario</label>
+                    </div>
+
+
+                    <div class="mb-4">
+                        <select name="Estado" class="" required>
+                            <option value="<?php echo $Docente['ESTADO'] ?>"><?php echo $Docente['ESTADO'] ?></option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
+
+            <?php
+
                 }
             }
-        ?>
-        
-        <input type="submit" value="Editar Docente">
+            ?>
 
-    </form>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-success btn-rounded mb-4">Editar docente</button>
+        </form>
+
+    </div>
+
+<!-- MDB -->
+<script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
+
 </body>
 
 </html>

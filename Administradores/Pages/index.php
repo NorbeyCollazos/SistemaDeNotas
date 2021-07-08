@@ -24,49 +24,51 @@ $Administradores = $ModeloAdministradores->get();
 
 <body>
 
-    <h2>
-        <a href="#">Administradores - </a>
-        <a href="../../Docentes/Pages/index.php">Docentes - </a>
-        <a href="../../Estudiantes/Pages/index.php">Estudiantes - </a>
-        <a href="../../Materias/Pages/index.php">Materias - </a>
-        <a href="../../Usuarios/Controladores/Salir.php">Salir</a>
+    <?php include("../../cabecera.php"); ?>
 
-    </h2>
+    <div class="container mt-3">
 
+        <h1>Administradores</h1>
+        <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Administrador</a><br><br>
 
-    <a href="add.php">Registrar Administrador</a><br><br>
-
-    <table border="1" cellspacing>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Usuario</th>
-            <th>Perfil</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-        <?php
-        if ($Administradores != null) {
-            foreach ($Administradores as $Administrador) {
-        ?>
+        <table class="table align-middle">
+            <thead>
                 <tr>
-                    <td><?php echo $Administrador['ID_USUARIO'] ?></td>
-                    <td><?php echo $Administrador['NOMBRE'] ?></td>
-                    <td><?php echo $Administrador['APELLIDO'] ?></td>
-                    <td><?php echo $Administrador['USUARIO'] ?></td>
-                    <td><?php echo $Administrador['PERFIL'] ?></td>
-                    <td><?php echo $Administrador['ESTADO'] ?></td>
-                    <td>
-                        <a href="edit.php?Id=<?php echo $Administrador['ID_USUARIO'] ?>">Editar</a>
-                        <a href="delete.php?Id=<?php echo $Administrador['ID_USUARIO'] ?>">Eliminar</a>
-                    </td>
+                    <th class="fw-bold">Id</th>
+                    <th class="fw-bold">Nombre</th>
+                    <th class="fw-bold">Apellidos</th>
+                    <th class="fw-bold">Usuario</th>
+                    <th class="fw-bold">Perfil</th>
+                    <th class="fw-bold">Estado</th>
+                    <th class="fw-bold">Acciones</th>
                 </tr>
-        <?php
+            </thead>
+            <?php
+            if ($Administradores != null) {
+                foreach ($Administradores as $Administrador) {
+            ?>
+                    <tr>
+                        <td><?php echo $Administrador['ID_USUARIO'] ?></td>
+                        <td><?php echo $Administrador['NOMBRE'] ?></td>
+                        <td><?php echo $Administrador['APELLIDO'] ?></td>
+                        <td><?php echo $Administrador['USUARIO'] ?></td>
+                        <td><?php echo $Administrador['PERFIL'] ?></td>
+                        <td><?php echo $Administrador['ESTADO'] ?></td>
+                        <td>
+                            <a href="edit.php?Id=<?php echo $Administrador['ID_USUARIO'] ?>" class="btn btn-primary btn-sm px-3">Editar</a>
+                            <a href="delete.php?Id=<?php echo $Administrador['ID_USUARIO'] ?>" class="btn btn-danger btn-sm px-3">Eliminar</a>
+                        </td>
+                    </tr>
+            <?php
+                }
             }
-        }
-        ?>
-    </table>
+            ?>
+        </table>
+
+    </div>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
 
 </body>
 

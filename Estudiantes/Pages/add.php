@@ -23,13 +23,34 @@ $ModeloMetodos = new Metodos();
 </head>
 
 <body>
-    <h1>Registrar estudiante</h1>
+<?php include("../../cabecera.php"); ?>
+
+<div class="container mt-3 col-md-6">
+
+    <h2 class="mb-3">Registrar Estudiante</h2>
+
     <form action="../Controladores/add.php" method="post">
 
-        <input type="text" name="Nombre" placeholder="Nombre"><br><br>
-        <input type="text" name="Apellido" placeholder="Apellidos"><br><br>
-        <input type="text" name="Documento" placeholder="Documento"><br><br>
-        <input type="text" name="Correo" placeholder="Correo"><br><br>
+    <div class="form-outline mb-4">
+            <input type="text" name="Nombre" id="form6Example1" class="form-control" required/>
+            <label class="form-label" for="form6Example1">Nombre</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text" name="Apellido" id="formform6Example2" class="form-control" required />
+            <label class="form-label" for="form6Example2">Apellido</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text" name="Documento" id="formform6Example2" class="form-control" required />
+            <label class="form-label" for="form6Example2">Documento</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="email" name="Correo" id="formform6Example2" class="form-control" required />
+            <label class="form-label" for="form6Example2">Correo</label>
+        </div>
+
         <select name="Materia">
             <option>Seleccione la Materia</option>
             <?php
@@ -57,10 +78,20 @@ $ModeloMetodos = new Metodos();
             }
             ?>
         </select><br><br>
-        <input type="number" name="Promedio" placeholder="Promedio"><br><br>
-        <input type="submit" value="Registrar Estudiante">
+        <div class="form-outline mb-4">
+            <input type="number" name="Promedio" id="formform6Example2" class="form-control" required />
+            <label class="form-label" for="form6Example2">Promedio</label>
+        </div>
+
+        <input type="submit" value="Registrar Estudiante" class="btn btn-success btn-rounded mb-4">
 
     </form>
+
+</div>
+
+<!-- MDB -->
+<script type="text/javascript" src="../../assets/js/mdb.min.js"></script>
+
 </body>
 
 </html>
