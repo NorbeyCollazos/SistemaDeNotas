@@ -5,7 +5,10 @@ Esta aplicación permite registrar los profesores. materias y estudiantes de una
 
 Lenguaje de proramación PHP, base de datos Mysql, HTML, CSS, Framework MDBoostrapp
 
-![Imagen](https://github.com/NorbeyCollazos/SugarApp/blob/master/screens/img1.jpg)
+![Imagen](https://github.com/NorbeyCollazos/SistemaDeNotas/blob/master/screens/img1.PNG)
+![Imagen](https://github.com/NorbeyCollazos/SistemaDeNotas/blob/master/screens/img4.PNG)
+![Imagen](https://github.com/NorbeyCollazos/SistemaDeNotas/blob/master/screens/img2.PNG)
+![Imagen](https://github.com/NorbeyCollazos/SistemaDeNotas/blob/master/screens/img3.PNG)
 
 
 
