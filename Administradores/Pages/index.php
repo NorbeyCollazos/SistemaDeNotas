@@ -28,7 +28,7 @@ $Administradores = $ModeloAdministradores->get();
 
     <div class="container mt-3">
 
-        <h1>Administradores</h1>
+        <h1><i class="fas fa-toolbox"></i> Administradores</h1>
         <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Administrador</a><br><br>
 
         <table class="table align-middle">

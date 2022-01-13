@@ -25,7 +25,7 @@ $Materias = $ModeloMaterias->get();
 
     <div class="container mt-3">
 
-        <h1>Materias</h1>
+        <h1><i class="fas fa-book-reader"></i> Materias</h1>
         <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Materia</a><br><br>
 
         <table class="table align-middle">

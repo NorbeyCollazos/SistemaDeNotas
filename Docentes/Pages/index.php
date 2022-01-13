@@ -28,7 +28,7 @@ $Docentes = $ModeloDocentes->get();
 
     <div class="container mt-3">
 
-        <h1>Docentes</h1>
+        <h1><i class="fas fa-chalkboard-teacher"></i> Docentes</h1>
         <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Docente</a><br><br>
 
         <table class="table align-middle">

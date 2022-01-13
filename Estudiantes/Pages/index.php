@@ -28,7 +28,7 @@ $Modelo = new Estudiantes();
 
 <div class="container mt-3">
 
-    <h1>Estudiantes</h1>
+    <h1><i class="far fa-user"></i> Estudiantes</h1>
     <a href="add.php" class="btn btn-secondary btn-rounded">Registrar Estudiante</a><br><br>
 
     <table class="table align-middle">
